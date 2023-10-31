@@ -8,6 +8,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import StaleElementReferenceException
 from PIL import Image, ImageDraw
+import re
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -45,6 +46,7 @@ try:
             for columnIndex,columnData in enumerate(columnAllData):
                 print(rowIndex,columnIndex)
                 nameImg=columnData.text
+                nameImg=re.sub(r'[^a-zA-Z0-9-]', '', nameImg)
                 try:
                     colorCode= columnData.find_element(
     By.XPATH, "./div/div")
