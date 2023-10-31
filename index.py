@@ -58,7 +58,7 @@ try:
                     draw.rectangle(((5, 5), (232, 74)), fill=background_color)
 
                     # Save the image to a file
-                    image.save(nameImg+".jpg")
+                    image.save("images/"+nameImg+".jpg")
                 except NoSuchElementException:
                     print("Not found color data")
                 
