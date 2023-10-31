@@ -47,16 +47,19 @@ try:
                 nameImg=columnData.text
                 try:
                     colorCode= columnData.find_element(
-    By.XPATH, "//div/div")
+    By.XPATH, "./div/div")
                     background_color = colorCode.value_of_css_property('background-color')
-                    width, height = 400, 300
-                    image = Image.new("RGB", (width, height), background_color)
-                    draw = ImageDraw.Draw(image)
+                    print(background_color)
+                    width, height = 237, 79
+                    image = Image.new("RGB", (width, height), "white")
+                    draw = ImageDraw.Draw(image)                    
+                    draw.rectangle(((5, 5), (232, 74)), fill=background_color)
+
                     # Save the image to a file
-                    image.save(nameImg+".png")
+                    image.save(nameImg+".jpg")
                 except NoSuchElementException:
                     print("Not found color data")
-                print(columnData.value_of_css_property("background-color"))
+                
 
         except NoSuchElementException:
              print("Not found column data")
