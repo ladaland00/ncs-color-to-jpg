@@ -41,15 +41,15 @@ try:
     for rowIndex,rowData in enumerate(tableAllData):
         try:
             columnAllData = rowData.find_elements(
-    By.XPATH, "//td")
+    By.XPATH, "./td")
             for columnIndex,columnData in enumerate(columnAllData):
-                print(columnData.text)
+                print(rowIndex,columnIndex)
                 nameImg=columnData.text
                 try:
                     colorCode= columnData.find_element(
     By.XPATH, "./div/div")
                     background_color = colorCode.value_of_css_property('background-color')
-                    print(background_color)
+                    # print(background_color)
                     width, height = 237, 79
                     image = Image.new("RGB", (width, height), "white")
                     draw = ImageDraw.Draw(image)                    
@@ -67,4 +67,5 @@ try:
 except NoSuchElementException:
     print("Not found table all data")
 
-
+print("Close browser")
+driver.quit()
